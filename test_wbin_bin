@@ -1,0 +1,93 @@
+#! /usr/bin/vvp
+:ivl_version "11.0 (stable)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/system.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_sys.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_textio.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/v2005_math.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/va_math.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/v2009.vpi";
+S_0x56152b13bd90 .scope package, "$unit" "$unit" 2 1;
+ .timescale 0 0;
+S_0x56152b13bf20 .scope module, "test" "test" 3 2;
+ .timescale 0 0;
+L_0x56152b18aad0 .functor NOT 5, L_0x56152b18a980, C4<00000>, C4<00000>, C4<00000>;
+L_0x56152b18ab90 .functor AND 5, L_0x56152b18a860, L_0x56152b18aad0, C4<11111>, C4<11111>;
+v0x56152b13c0b0_0 .net *"_ivl_0", 4 0, L_0x56152b18a860;  1 drivers
+v0x56152b189e80_0 .net *"_ivl_10", 4 0, L_0x56152b18ab90;  1 drivers
+L_0x7fa853f0c018 .functor BUFT 1, C4<0000>, C4<0>, C4<0>, C4<0>;
+v0x56152b189f60_0 .net *"_ivl_3", 3 0, L_0x7fa853f0c018;  1 drivers
+v0x56152b18a020_0 .net *"_ivl_4", 4 0, L_0x56152b18a980;  1 drivers
+L_0x7fa853f0c060 .functor BUFT 1, C4<0000>, C4<0>, C4<0>, C4<0>;
+v0x56152b18a100_0 .net *"_ivl_7", 3 0, L_0x7fa853f0c060;  1 drivers
+v0x56152b18a1e0_0 .net *"_ivl_8", 4 0, L_0x56152b18aad0;  1 drivers
+v0x56152b18a2c0_0 .var/i "i", 31 0;
+v0x56152b18a3a0_0 .var "wbin", 4 0;
+v0x56152b18a480_0 .net "wbnext", 4 0, L_0x56152b18aca0;  1 drivers
+v0x56152b18a560_0 .var "wclk", 0 0;
+v0x56152b18a620_0 .var "wfull", 0 0;
+v0x56152b18a6e0_0 .var "winc", 0 0;
+v0x56152b18a7a0_0 .var "wrst_n", 0 0;
+E_0x56152b175d90 .event posedge, v0x56152b18a560_0;
+L_0x56152b18a860 .concat [ 1 4 0 0], v0x56152b18a6e0_0, L_0x7fa853f0c018;
+L_0x56152b18a980 .concat [ 1 4 0 0], v0x56152b18a620_0, L_0x7fa853f0c060;
+L_0x56152b18aca0 .arith/sum 5, v0x56152b18a3a0_0, L_0x56152b18ab90;
+    .scope S_0x56152b13bf20;
+T_0 ;
+    %pushi/vec4 0, 0, 5;
+    %store/vec4 v0x56152b18a3a0_0, 0, 5;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x56152b18a6e0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x56152b18a620_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x56152b18a560_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x56152b18a7a0_0, 0, 1;
+    %end;
+    .thread T_0, $init;
+    .scope S_0x56152b13bf20;
+T_1 ;
+    %delay 5, 0;
+    %load/vec4 v0x56152b18a560_0;
+    %inv;
+    %store/vec4 v0x56152b18a560_0, 0, 1;
+    %jmp T_1;
+    .thread T_1;
+    .scope S_0x56152b13bf20;
+T_2 ;
+    %vpi_call/w 3 17 "$display", "Testing wbin increment logic..." {0 0 0};
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v0x56152b18a2c0_0, 0, 32;
+T_2.0 ;
+    %load/vec4 v0x56152b18a2c0_0;
+    %cmpi/s 10, 0, 32;
+    %jmp/0xz T_2.1, 5;
+    %wait E_0x56152b175d90;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x56152b18a6e0_0, 0, 1;
+    %delay 1, 0;
+    %load/vec4 v0x56152b18a6e0_0;
+    %load/vec4 v0x56152b18a620_0;
+    %inv;
+    %and;
+    %vpi_call/w 3 23 "$display", "i=%d, wbin=%d, wbnext=%d, winc&~wfull=%b", v0x56152b18a2c0_0, v0x56152b18a3a0_0, v0x56152b18a480_0, S<0,vec4,u1> {1 0 0};
+    %load/vec4 v0x56152b18a480_0;
+    %assign/vec4 v0x56152b18a3a0_0, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x56152b18a6e0_0, 0, 1;
+    %load/vec4 v0x56152b18a2c0_0;
+    %addi 1, 0, 32;
+    %store/vec4 v0x56152b18a2c0_0, 0, 32;
+    %jmp T_2.0;
+T_2.1 ;
+    %vpi_call/w 3 28 "$finish" {0 0 0};
+    %end;
+    .thread T_2;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "-";
+    "test_wbin.v";

@@ -1,0 +1,110 @@
+```
+# Executable files
+fifo_check
+fifo_debug
+fifo_debug3
+fifo_debug_simple
+fifo_full_check
+fifo_full_debug
+fifo_internal_probe
+fifo_sim
+fifo_sim_debug
+fifo_sim_final
+fifo_sim_improved
+fifo_sim_simple
+fifo_standalone
+fifo_wave
+fifo_wave_debug
+tb_wptr_only
+test_wbin_bin
+wptr_standalone
+wptr_test
+
+# Simulation output files
+*.vcd
+
+# Build/test directories
+build/
+dist/
+target/
+
+# Dependencies
+node_modules/
+venv/
+.venv/
+__pycache__/
+*.egg-info/
+
+# Logs and temp files
+*.log
+*.tmp
+*.swp
+
+# Editors
+.vscode/
+.idea/
+
+# Environment
+.env
+.env.local
+*.env.*
+
+# OS specific
+.DS_Store
+Thumbs.db
+
+# Coverage
+coverage/
+htmlcov/
+.coverage
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+
+# Java/Maven
+*.class
+*.jar
+*.war
+*.ear
+target/
+.gradle/
+build/
+
+# C/C++
+*.o
+*.a
+*.so
+*.dll
+*.exe
+*.out
+*.obj
+
+# Compression
+*.zip
+*.gz
+*.tar
+*.tgz
+*.bz2
+*.xz
+*.7z
+*.rar
+*.zst
+*.lz4
+*.lzh
+*.cab
+*.arj
+*.rpm
+*.deb
+*.Z
+*.lz
+*.lzo
+*.tar.gz
+*.tar.bz2
+*.tar.xz
+*.tar.zst
+```
